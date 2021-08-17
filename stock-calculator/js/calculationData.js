@@ -61,15 +61,20 @@ Vue.createApp({
                     break;
                 case 3:
                     this.buyDiscount = 6;
-                    this.boardLotBaseCharge = 5;
+                    this.boardLotBaseCharge = 20;
                     this.oddLottBaseCharge = 1;
                     break;
                 case 4:
                     this.buyDiscount = 6.5;
-                    this.boardLotBaseCharge = 20;
+                    this.boardLotBaseCharge = 1;
                     this.oddLottBaseCharge = 1;
                     break;
                 case 5:
+                    this.buyDiscount = 2.8;
+                    this.boardLotBaseCharge = 20;
+                    this.oddLottBaseCharge = 1;
+                    break;
+                case 6:
                     this.buyDiscount = 2.8;
                     this.boardLotBaseCharge = 20;
                     this.oddLottBaseCharge = 1;

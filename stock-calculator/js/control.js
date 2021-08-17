@@ -4,9 +4,9 @@ const wrapper = document.getElementById("wrapper");
 const appBox = document.getElementById("app");
 const content = document.getElementById("content");
 const topBox = document.getElementById("top-box");
+const activeBackground = document.getElementById("active-background");
 
 header.innerHTML += `
-<header>
     <div id="nav-open-btn" class="nav-open-btn">
         <i class="fas fa-bars"></i>
     </div>
@@ -29,8 +29,6 @@ header.innerHTML += `
             </ul>
         </nav>
     </div>
-
-</header>
 `;
 
 const navOpenBtn = document.getElementById("nav-open-btn");
@@ -39,11 +37,13 @@ const navCloseBtn = document.getElementById("nav-close-btn");
 navOpenBtn.addEventListener("click", function () {
     navBar.style.transform = "scale(1)";
     navBar.style.zIndex = "100";
-    wrapper.style.filter = "brightness(0.5)";
+    activeBackground.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    activeBackground.style.zIndex = "0";
 })
 
 navCloseBtn.addEventListener("click", function () {
     navBar.style.transform = "scale(0)";
     navBar.style.zIndex = "0";
-    wrapper.style.filter = "brightness(1)";
+    activeBackground.style.backgroundColor = "rgba(0, 0, 0, 0)";
+    activeBackground.style.zIndex = "-1";
 })

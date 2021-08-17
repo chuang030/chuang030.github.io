@@ -7,4 +7,15 @@
         text-indent: 2em;
         text-align: left;
     }
+
+    #current-version{
+        width: 100%;
+        text-align: center;
+        color: rgba(160, 160, 160, 1);
+        font-size: 0.6em;
+
+        span{
+            padding-right: 1em;
+        }
+    }
 }

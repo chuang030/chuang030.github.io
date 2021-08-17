@@ -60,6 +60,7 @@
                             <option value="3">凱基證券</option>
                             <option value="4">永豐金證券</option>
                             <option value="5">新光證券</option>
+                            <option value="6">台新證券</option>
                         </select>
                     </div>
                 </div>
@@ -177,6 +178,10 @@
                                     name="oddLottBaseCharge" v-model.number="oddLottBaseCharge"
                                     @input="stockCalculation()">
                                 <span>元</span>
+                                <!-- <label for="Charge">興櫃<span>：</span></label><input type="number" id="oddLottBaseCharge"
+                                    name="oddLottBaseCharge" v-model.number="oddLottBaseCharge"
+                                    @input="stockCalculation()">
+                                <span>元</span> -->
                             </div>
                         </div>
                         <div id="stock-type" class="set-type-box-class" :class="{active : this.modelBox.full}">
@@ -273,39 +278,14 @@
                     <p>由於小數點處理方式與券商有些需不同，計算結果可能會有所差異。</p>
                     <p>本站設計風格由「BanG Dream!」此款遊戲改編而來。</p>
                     <p>最後祝大家在茫茫股海中都能賺大錢~</p>
+                    <div id="current-version">版本v1.0.1<span></span>更新日期2021/08/17</div>
                 </footer>
             </div>
         </div>
     </div>
+    <div id="active-background" class="active-background"></div>
 </body>
 <script type="text/javascript" src="js/control.js"></script>
 <script type="text/javascript" src="js/StockCalculation.js"></script>
 <script type="text/javascript" src="js/calculationData.js"></script>
-
-<!-- <script>
-    let formItem = document.getElementById("set-type-box-form");
-    let checkboxItem = document.getElementsByClassName("checkboxItem");
-    let labelCheckbox = document.getElementsByClassName("label-checkbox");
-    function checkFun(input) {
-        for (i = 0; i < checkboxItem.length; i++) {
-            checkboxItem[i].checked = false;
-        }
-        input.checked = true;
-        return true;
-    }
-    function checkedIsTrueIndex(obj) {
-        let arr = [];
-        for (i = 0; i < obj.length; i++) {
-            arr.push(obj[i].checked === true);
-        }
-        return arr.indexOf(true);
-    }
-    for (const iterator of checkboxItem) {
-        iterator.addEventListener("click", () => {
-            console.log(checkedIsTrueIndex(checkboxItem));
-            labelCheckbox[checkedIsTrueIndex(checkboxItem)].style.display = "none";
-        })
-    }
-</script> -->
-
 </html>

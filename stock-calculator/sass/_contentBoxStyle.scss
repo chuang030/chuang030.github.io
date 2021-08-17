@@ -309,6 +309,7 @@
 
         .set-type-box-class {
             @include theme-box-display;
+            justify-content: space-around;
             align-items  : flex-start;
             padding-top  : 0.5em;
             width        : 100%;

@@ -246,14 +246,25 @@ img {
 }
 
 body {
-  overflow: hidden;
   position: relative;
-}
-
-body .wrapper {
   height: 100vh;
   background: url(../images/bg/bgPattern.webp);
   background-attachment: fixed;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25em;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #f3419b;
+}
+
+body .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -262,21 +273,6 @@ body .wrapper {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: all 200ms ease;
-  transition: all 200ms ease;
-  overflow-y: scroll;
-}
-
-body .wrapper::-webkit-scrollbar {
-  width: 0.25em;
-}
-
-body .wrapper::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body .wrapper::-webkit-scrollbar-thumb {
-  background: #f3419b;
 }
 
 body .wrapper .top-box {
@@ -314,7 +310,7 @@ body .wrapper .content {
 }
 
 .app {
-  max-width: 568px;
+  max-width: 625px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -361,6 +357,18 @@ input:focus {
           justify-content: center;
   width: 100%;
   height: 100vh;
+}
+
+.active-background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  z-index: -1;
 }
 
 header {
@@ -967,6 +975,8 @@ header .nav-bar nav ul li a span img {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
@@ -1226,6 +1236,15 @@ header .nav-bar nav ul li a span img {
     line-height: 1.5em;
     text-indent: 2em;
     text-align: left;
+  }
+  body .wrapper .app .content footer #current-version {
+    width: 100%;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 0.6em;
+  }
+  body .wrapper .app .content footer #current-version span {
+    padding-right: 1em;
   }
 }
 
