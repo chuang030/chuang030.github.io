@@ -1,0 +1,84 @@
+@media only screen and (min-width: 320px) {
+    html,body,div,span,h1,h2,h3,p,a,img{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        color: inherit;
+        vertical-align: bottom;
+    }
+    img{
+        width: auto;
+        width: 100%;
+        max-width: 600px;
+        max-height: 450px;
+    }
+    img.scaled{
+        transform: scale(1.75);
+        transition: all 250ms ease;
+    }
+    body{
+        width: 100%;
+    }
+    #wrapper{
+        width: 100%;
+        background-color:grey;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #content{
+        margin: 1em;
+        padding: 1.5em;
+        width: 100%;
+        max-width: 1200px;
+        border-radius: 10px;
+        background-color: white;
+    }
+    #content header{
+        position: relative;
+    }
+    #content header img{
+        width: 10%;
+        position: absolute;
+        right: 50%;
+        bottom: -15%;
+        animation: dinosaur 3s linear infinite;
+        display: none;
+    }
+    #content header:hover img{
+        filter: opacity(0);
+        transition: all 1s ease;
+    }
+    @keyframes dinosaur{
+        0%{
+            transform: translateX(0);
+            opacity: 0;
+        }
+        5%{
+            transform: translateX(0);
+            opacity: 1;
+        }
+        60%{
+            transform: translateX(800px);
+            opacity: 1;
+        }
+        65%{
+            transform: translateX(800px);
+            opacity: 0;
+        }
+        100%{
+            transform: translateX(0px);
+            opacity: 0;
+        }
+    }
+    span a{
+        color: dodgerblue;
+    }
+    .box{
+        padding: 2em 0;
+    }
+    p{
+        line-height: 1.5em;
+    }
+}
