@@ -81,4 +81,7 @@
     p{
         line-height: 1.5em;
     }
+    a{
+        color: lightskyblue;
+    }
 }
