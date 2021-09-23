@@ -86,7 +86,7 @@ Vue.createApp({
             const sendReq = async () => {
                 const res = await axios({
                     method: 'post',
-                    url: 'http://minecraft.minichihub.com:3000',
+                    url: 'https://web.sweetabiu.com:3000',
                     data: {
                         item: this.item
                     }
@@ -121,7 +121,7 @@ Vue.createApp({
         async sendStock() {
             await axios({
                 method: 'get',
-                url: `http://minecraft.minichihub.com:3000/user`
+                url: `https://web.sweetabiu.com:3000/user`
             })
                 .then(response => {
                     if (response.request.readyState === 4 && response.status === 200) {
