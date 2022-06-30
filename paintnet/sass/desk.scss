@@ -1,0 +1,108 @@
+@media only screen and (min-width: 768px) {
+
+    html,
+    body,
+    div,
+    span,
+    h1,
+    h2,
+    h3,
+    p,
+    a,
+    img {
+        margin         : 0;
+        padding        : 0;
+        box-sizing     : border-box;
+        text-decoration: none;
+        color          : inherit;
+        vertical-align : bottom;
+    }
+
+    html,
+    body {
+        min-height: 100vh;
+    }
+
+    body {
+        background-color: grey;
+    }
+
+    img {
+        width     : auto;
+        max-height: 600px;
+        transition: all 250ms ease;
+    }
+
+    img.scaled {
+        transform : scale(1.75);
+        transition: all 250ms ease;
+    }
+
+    body {
+        width: 100%;
+    }
+
+    #wrapper {
+        width           : 100%;
+        min-height      : 100vh;
+        background-color: grey;
+        display         : flex;
+        flex-wrap       : wrap;
+        justify-content : center;
+    }
+
+    #content {
+        margin          : 1em;
+        padding         : 3em;
+        width           : 90%;
+        max-width       : 1200px;
+        border-radius   : 10px;
+        background-color: white;
+        display         : flex;
+        flex-wrap       : wrap;
+        justify-content : center;
+
+        header {
+            width   : 100%;
+            position: relative;
+
+            img {
+                width    : 10%;
+                position : absolute;
+                right    : 50%;
+                bottom   : -15%;
+                animation: dinosaur 3s linear infinite;
+                display  : block;
+
+                &:hover img {
+                    filter    : opacity(0);
+                    transition: all 1s ease;
+                }
+            }
+        }
+    }
+
+    span a {
+        color: dodgerblue;
+    }
+
+    .box {
+        width    : 100%;
+        padding  : 2em 0;
+        display  : flex;
+        flex-wrap: wrap;
+    }
+
+    h2 {
+        width: 100%;
+    }
+
+    p {
+        width      : 100%;
+        line-height: 1.5em;
+    }
+
+    a {
+        color: lightskyblue;
+    }
+}

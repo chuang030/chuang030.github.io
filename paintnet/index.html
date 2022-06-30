@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyDesk說明</title>
+    <link rel="stylesheet" href="css/phone.css">
+    <link rel="stylesheet" href="css/desk.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <header>
+                <h1>Paint.net使用說明</h1>
+                <h2>目錄</h2>
+            </header>
+            <div class="box">
+                <h2>步驟1.</h2>
+                <p>下載檔案，檔案位置可隨意放置</p>
+                <img src="https://dm2302files.storage.live.com/y4m93Z10AYVh4jesVOapzhMZXQrKo5119MNrgDJCj3B5YaQrtaRlUp7pnXwmALneNLM8vvjw6fIDOIE1aJCKbdGHJVS8TZIs3xAwWt1684Umd3exWeGE0IXCJqL2AmWf5EE1305x0eCEjbizFRsdTcdtwfrg_a85a2B_diZs63xi0yqdDSvtfY6wy11qvCr-0a9?width=1718&height=928&cropmode=none"
+                    alt="下載檔案，檔案位置可隨意放置" title="下載檔案，檔案位置可隨意放置">
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+<script>
+    const img = document.querySelectorAll("img");
+    for (const iterator of img) {
+        iterator.addEventListener("mouseenter", () => {
+            iterator.classList.add("scaled");
+        })
+        iterator.addEventListener("mouseleave", () => {
+            iterator.classList.remove("scaled");
+        })
+        iterator.addEventListener("click", () => {
+            if (iterator.className != "scaled") {
+                iterator.classList.add("scaled");
+            } else {
+                iterator.classList.remove("scaled");
+            }
+        })
+    }
+</script>
+
+</html>
