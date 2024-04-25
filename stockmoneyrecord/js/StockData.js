@@ -42,7 +42,7 @@ Vue.createApp({
                 type: type
             }
             const sc = new StockCalculation(valueObject);
-            sNamePush.push(this.item[index].sName)
+            sNamePush.push(this.item.data[index].sName)
             marketPricePush.push(sc.getMarketPrice())
             averagePricePush.push(sc.getAveragePrice());
             numberOfPilesPush.push(sc.getNumberOfPiles());
@@ -52,7 +52,7 @@ Vue.createApp({
             profitAndLossPercentagePush.push(sc.getProfitAndLossPercentage());
             dataObject.push(sNamePush, marketPricePush, averagePricePush, numberOfPilesPush, carryingCosts, marketValue, profitAndLossPush, profitAndLossPercentagePush)
             this.dataObject[index] = dataObject
-            if (Number(index) === this.item.length - 1) {
+            if (Number(index) === this.item.data.length - 1) {
                 this.totalCalculation()
             }
         },
@@ -86,7 +86,7 @@ Vue.createApp({
             const sendReq = async () => {
                 const res = await axios({
                     method: 'post',
-                    url: 'http://minichihub.com:3000',
+                    url: 'http://localhost:3000/data',
                     data: {
                         item: this.item
                     }
@@ -96,13 +96,12 @@ Vue.createApp({
                         this.hintState = "失敗"
                     }
                 })
-                
                 // console.log(JSON.stringify(res.data.stockNoData) === JSON.stringify(this.item.map(e =>{return e.stockNo})));
                 //驗證回傳的資料是否正確，錯誤則再次請求(請求後500毫秒後驗證)，驗方法為取得的股票編號陣列與回傳的股票編號陣列是否相同
-                if (JSON.stringify(res.data.stockNoData) === JSON.stringify(this.item.map(e => { return e.stockNo }))) {
+                if (JSON.stringify(res.data.stockNoData) === JSON.stringify(this.item.data.map(e => { return e.stockNo }))) {
                     //資料正確逐筆進入計算
                     for (const key in res.data.regularMarketPrice) {
-                        this.stockCalculation(res.data.regularMarketPrice[key], this.item[key].averagePrice, this.item[key].numberOfPiles, 6, 0, key)
+                        this.stockCalculation(res.data.regularMarketPrice[key], this.item.data[key].averagePrice, this.item.data[key].numberOfPiles, 6, 0, key)
                     }
                     this.hintState = "成功";
                 } else {
@@ -121,7 +120,7 @@ Vue.createApp({
         async sendStock() {
             await axios({
                 method: 'get',
-                url: `http://minichihub.com:3000/user`
+                url: `http://localhost:3000/user`
             })
                 .then(response => {
                     if (response.request.readyState === 4 && response.status === 200) {

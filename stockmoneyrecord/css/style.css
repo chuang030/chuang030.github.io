@@ -30,11 +30,10 @@ h4,
 h5 {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: "Microsoft JhengHei",sans-serif;
+  font-family: "Microsoft JhengHei", sans-serif;
   color: inherit;
   vertical-align: bottom;
 }
@@ -251,42 +250,25 @@ body {
   background: url(../images/bg/bgPattern.webp);
   background-attachment: fixed;
 }
-
 body::-webkit-scrollbar {
   width: 0.25em;
 }
-
 body::-webkit-scrollbar-track {
   background: transparent;
 }
-
 body::-webkit-scrollbar-thumb {
-  background: #f3419b;
+  background: rgb(243, 65, 155);
 }
-
 body .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 body .wrapper .top-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   margin-top: 0.2em;
   width: 90%;
   max-width: 280px;
@@ -294,16 +276,13 @@ body .wrapper .top-box {
   border-radius: 25px;
   border-top-left-radius: 90px;
   border-bottom-left-radius: 90px;
-  border: #d2d2d2 1px solid;
+  border: rgb(210, 210, 210) 1px solid;
   position: fixed;
   top: 0%;
   right: 40px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   z-index: 10;
 }
-
 body .wrapper .content {
   margin-top: 40px;
   width: 90vw;
@@ -311,50 +290,36 @@ body .wrapper .content {
 
 .app {
   max-width: 625px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
   overflow: hidden;
 }
 
 select:focus,
 input:focus {
-  outline-color: #f3419b;
+  outline-color: rgb(243, 65, 155);
 }
 
 .theme-style-box {
   margin: 0.2em;
   padding: 0.2em;
   min-width: 120px;
-  border: #d2d2d2 1px solid;
+  border: rgb(210, 210, 210) 1px solid;
   border-radius: 5px;
   text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
   background-color: white;
 }
 
 .fixed-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
 }
@@ -366,7 +331,6 @@ input:focus {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0);
-  -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
   z-index: -1;
 }
@@ -374,20 +338,17 @@ input:focus {
 header {
   position: relative;
 }
-
 header .nav-open-btn {
   margin: 0.2em;
   padding: 0.2em;
   min-width: 120px;
-  border: #a0a0a0 1px solid;
+  border: rgb(160, 160, 160) 1px solid;
   border-radius: 5px;
   font-weight: bold;
   text-align: center;
   text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-  background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-  -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-          box-shadow: 1px 1px 2px #9c9c9c;
+  background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+  box-shadow: 1px 1px 2px rgb(156, 156, 156);
   margin-right: 0.4em;
   position: fixed;
   top: 0%;
@@ -396,163 +357,123 @@ header .nav-open-btn {
   max-width: 30px;
   height: 30px;
   padding: 0.4em;
-  color: #f3419b;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  color: rgb(243, 65, 155);
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   z-index: 1;
 }
-
 header .nav-bar {
   width: 100vw;
   position: fixed;
   top: 30%;
   left: 0%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transition: all 200ms ease;
+  justify-content: center;
+  transform: scale(0);
   transition: all 200ms ease;
   z-index: 10;
 }
-
 header .nav-bar nav {
   max-width: 414px;
   margin: 0.5em;
   padding: 0.5em;
-  border: #d2d2d2 1px solid;
-  -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-          box-shadow: 1px 1px 2px #9c9c9c;
+  border: rgb(210, 210, 210) 1px solid;
+  box-shadow: 1px 1px 2px rgb(156, 156, 156);
   border-radius: 5px;
   background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
   position: relative;
 }
-
 header .nav-bar nav .nav-title {
   width: 100%;
   margin: 0 2em;
-  border-bottom: #f3419b 1px solid;
+  border-bottom: rgb(243, 65, 155) 1px solid;
 }
-
 header .nav-bar nav .nav-title p {
   font-weight: bold;
 }
-
 header .nav-bar nav span {
   position: absolute;
   left: 20px;
   top: 10px;
 }
-
 header .nav-bar nav span img {
   max-width: 20px;
 }
-
 header .nav-bar nav ul {
   margin-top: 0.5em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 header .nav-bar nav ul li a {
   margin: 0.2em;
   padding: 0.2em;
   min-width: 120px;
-  border: #a0a0a0 1px solid;
+  border: rgb(160, 160, 160) 1px solid;
   border-radius: 5px;
   font-weight: bold;
   text-align: center;
   text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-  background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-  -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-          box-shadow: 1px 1px 2px #9c9c9c;
+  background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+  box-shadow: 1px 1px 2px rgb(156, 156, 156);
   display: inline-block;
   position: relative;
 }
-
 header .nav-bar nav ul li a span {
   position: absolute;
   left: 3px;
   top: 1.5px;
 }
-
 header .nav-bar nav ul li a span img {
   max-width: 25px;
 }
 
 @media only screen and (min-width: 320px) {
   .grid-xs-1 {
-    width: calc(100% / 12 * 1);
+    width: calc(8.3333333333% * 1);
   }
   .grid-xs-2 {
-    width: calc(100% / 12 * 2);
+    width: calc(8.3333333333% * 2);
   }
   .grid-xs-3 {
-    width: calc(100% / 12 * 3);
+    width: calc(8.3333333333% * 3);
   }
   .grid-xs-4 {
-    width: calc(100% / 12 * 4);
+    width: calc(8.3333333333% * 4);
   }
   .grid-xs-5 {
-    width: calc(100% / 12 * 5);
+    width: calc(8.3333333333% * 5);
   }
   .grid-xs-6 {
-    width: calc(100% / 12 * 6);
+    width: calc(8.3333333333% * 6);
   }
   .grid-xs-7 {
-    width: calc(100% / 12 * 7);
+    width: calc(8.3333333333% * 7);
   }
   .grid-xs-8 {
-    width: calc(100% / 12 * 8);
+    width: calc(8.3333333333% * 8);
   }
   .grid-xs-9 {
-    width: calc(100% / 12 * 9);
+    width: calc(8.3333333333% * 9);
   }
   .grid-xs-10 {
-    width: calc(100% / 12 * 10);
+    width: calc(8.3333333333% * 10);
   }
   .grid-xs-11 {
-    width: calc(100% / 12 * 11);
+    width: calc(8.3333333333% * 11);
   }
   .grid-xs-12 {
-    width: calc(100% / 12 * 12);
+    width: calc(8.3333333333% * 12);
   }
   body .wrapper .app .top-box {
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
   }
   body .wrapper .app .top-box .top-box-title-icon {
     position: absolute;
@@ -563,21 +484,12 @@ header .nav-bar nav ul li a span img {
     width: 20%;
   }
   body .wrapper .app .top-box .search-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     position: relative;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    justify-content: flex-end;
   }
   body .wrapper .app .top-box .search-box h4 {
     display: inline-block;
@@ -590,11 +502,10 @@ header .nav-bar nav ul li a span img {
     min-width: 140px;
     border: white;
     border-radius: 10px;
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
   }
   body .wrapper .app .top-box .search-box input:focus {
-    outline-color: #f3419b;
+    outline-color: rgb(243, 65, 155);
   }
   body .wrapper .app .top-box .top-box-class {
     width: 55%;
@@ -614,12 +525,8 @@ header .nav-bar nav ul li a span img {
     min-width: 0;
   }
   body .wrapper .app .top-box .top-box-class span {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
     display: inline-flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     min-width: 4em;
     text-align: right;
   }
@@ -628,50 +535,29 @@ header .nav-bar nav ul li a span img {
     width: 100%;
   }
   body .wrapper .app .content .state-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     background-image: url(../images/Box/StateBox/bg.webp);
     background-position: center;
     background-size: cover;
     position: relative;
   }
   body .wrapper .app .content .state-box .state-box-title {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 80%;
     min-height: 100px;
     position: relative;
   }
   body .wrapper .app .content .state-box .state-box-title .state-box-title-class {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 40%;
   }
   body .wrapper .app .content .state-box .state-box-title .state-box-title-class .value-circle {
@@ -694,19 +580,12 @@ header .nav-bar nav ul li a span img {
     border: #79A4EC 10px solid;
     -webkit-clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
             clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   body .wrapper .app .content .state-box .state-box-title .state-box-title-class .value-circle:nth-of-type(4) {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: center;
+    align-items: center;
   }
   body .wrapper .app .content .state-box .state-box-title .state-box-title-class .state-box-item {
     min-width: 9em;
@@ -727,41 +606,24 @@ header .nav-bar nav ul li a span img {
     background-size: cover;
   }
   body .wrapper .app .content .stock-box .stock-item-class {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-label1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    border-bottom: #d2d2d2 1px solid;
+    flex-wrap: nowrap;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-label1 .stock-item-box-title {
     width: 25%;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
+    flex: 0 0 auto;
     text-align: right;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-label1 .stock-item-box-title:nth-of-type(1) {
@@ -769,56 +631,31 @@ header .nav-bar nav ul li a span img {
     text-align: center;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content .item-class {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
-    border-bottom: #d2d2d2 1px solid;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content .item-class:nth-last-of-type(1) {
     border-bottom: none;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content .item-class .item-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 25%;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    flex: 0 0 auto;
+    justify-content: flex-end;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content .item-class .item-box li {
     width: 100%;
@@ -826,36 +663,32 @@ header .nav-bar nav ul li a span img {
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content .item-class .item-box:nth-of-type(1) {
     width: 20%;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
   body .wrapper .app .content .stock-box .stock-item-class .stock-class-content .item-class .item-box:nth-of-type(1) li {
     width: 100%;
     text-align: center;
   }
   body .wrapper .app .content .hint-box p span {
-    color: #f3419b;
+    color: rgb(243, 65, 155);
   }
   body .wrapper .app .content .hint-box iframe {
     width: 100%;
     height: 200px;
-    border: #d2d2d2 1px solid;
+    border: rgb(210, 210, 210) 1px solid;
     border-radius: 5px;
   }
   body .wrapper .app .content .hint-box .hint-box-continue-btn {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #a0a0a0 1px solid;
+    border: rgb(160, 160, 160) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-    background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     max-width: 300px;
   }
   body .wrapper .app .content .affirm-box {
@@ -872,93 +705,64 @@ header .nav-bar nav ul li a span img {
   body .wrapper .app .content .title-box {
     width: 100%;
     text-align: center;
-    border-bottom: #d2d2d2 1px solid;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .setting-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #d2d2d2 1px solid;
+    border: rgb(210, 210, 210) 1px solid;
     border-radius: 5px;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
     background-color: white;
   }
   body .wrapper .app .content .setting-box .set-model-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
   }
   body .wrapper .app .content .setting-box .set-model-box .set-model-box-item {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #a0a0a0 1px solid;
+    border: rgb(160, 160, 160) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-    background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     padding: 0;
     min-width: 0;
     -webkit-user-select: none;
        -moz-user-select: none;
-        -ms-user-select: none;
             user-select: none;
     cursor: pointer;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
   }
   body .wrapper .app .content .setting-box .set-model-box .set-model-box-item .model-item-btn {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #a0a0a0 1px solid;
+    border: rgb(160, 160, 160) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-    background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     margin: 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     min-width: 0;
     border: none;
   }
@@ -966,19 +770,16 @@ header .nav-bar nav ul li a span img {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #e2056f 1px solid;
+    border: rgb(226, 5, 111) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    text-shadow: -0.75px -0.75px 0 #e2056f, 0.75px -0.75px 0 #e2056f, -0.75px 0.75px 0 #e2056f, 0.75px 0.75px 0 #e2056f, 2px 2px 2px #e2056f;
+    text-shadow: -0.75px -0.75px 0 rgb(226, 5, 111), 0.75px -0.75px 0 rgb(226, 5, 111), -0.75px 0.75px 0 rgb(226, 5, 111), 0.75px 0.75px 0 rgb(226, 5, 111), 2px 2px 2px rgb(226, 5, 111);
     color: white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffb5ce), color-stop(52%, #f2f2f2), color-stop(54%, #ff4783));
-    background: linear-gradient(#ffb5ce 50%, #f2f2f2 52%, #ff4783 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 181, 206) 50%, rgb(242, 242, 242) 52%, rgb(255, 71, 131) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     margin: 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     min-width: 0;
   }
   body .wrapper .app .content .setting-box .set-model-box .set-model-box-item #simple {
@@ -988,74 +789,45 @@ header .nav-bar nav ul li a span img {
     border-radius: 0 5px 5px 0;
   }
   body .wrapper .app .content .setting-box .set-model-box .set-model-box-item:nth-last-of-type(1) {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     width: 25px;
     height: 25px;
-    color: #f3419b;
+    color: rgb(243, 65, 155);
     border-radius: 50%;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    transform: scale(0.8);
   }
   body .wrapper .app .content .setting-box .set-model-box #icon.set-model-box-item.active {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #e2056f 1px solid;
+    border: rgb(226, 5, 111) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    text-shadow: -0.75px -0.75px 0 #e2056f, 0.75px -0.75px 0 #e2056f, -0.75px 0.75px 0 #e2056f, 0.75px 0.75px 0 #e2056f, 2px 2px 2px #e2056f;
+    text-shadow: -0.75px -0.75px 0 rgb(226, 5, 111), 0.75px -0.75px 0 rgb(226, 5, 111), -0.75px 0.75px 0 rgb(226, 5, 111), 0.75px 0.75px 0 rgb(226, 5, 111), 2px 2px 2px rgb(226, 5, 111);
     color: white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffb5ce), color-stop(52%, #f2f2f2), color-stop(54%, #ff4783));
-    background: linear-gradient(#ffb5ce 50%, #f2f2f2 52%, #ff4783 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    background: linear-gradient(rgb(255, 181, 206) 50%, rgb(242, 242, 242) 52%, rgb(255, 71, 131) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
+    transform: scale(0.8);
     min-width: 0px;
   }
   body .wrapper .app .content .setting-box .securities-firms-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
   }
   body .wrapper .app .content .setting-box .securities-firms-box select {
@@ -1063,61 +835,40 @@ header .nav-bar nav ul li a span img {
     padding: 0.2em;
   }
   body .wrapper .app .content .stting-instruction {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #d2d2d2 1px solid;
+    border: rgb(210, 210, 210) 1px solid;
     border-radius: 5px;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
     background-color: white;
     max-height: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    transform: scale(0);
+    justify-content: center;
+    align-items: flex-start;
     padding: 0;
     margin: 0;
     z-index: 10;
   }
   body .wrapper .app .content .stting-instruction .stting-instruction-class {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 50%;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    align-items: flex-start;
   }
   body .wrapper .app .content .stting-instruction .stting-instruction-class:nth-of-type(1) {
     width: 100%;
-    border-bottom: #d2d2d2 1px solid;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .stting-instruction .stting-instruction-class:nth-of-type(2) {
     width: 100%;
-    border-bottom: #d2d2d2 1px solid;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .stting-instruction .stting-instruction-class h4 {
     width: 100%;
@@ -1132,14 +883,12 @@ header .nav-bar nav ul li a span img {
     text-indent: 2em;
   }
   body .wrapper .app .content .stting-instruction .stting-instruction-class p span {
-    color: #f3419b;
+    color: rgb(243, 65, 155);
   }
   body .wrapper .app .content .stting-instruction.active {
-    -webkit-transition: all 50ms ease;
     transition: all 50ms ease;
     max-height: none;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     padding: 0.2em;
     margin: 0.2em;
   }
@@ -1147,46 +896,23 @@ header .nav-bar nav ul li a span img {
   body .wrapper .app .content .sell-box,
   body .wrapper .app .content .set-type-box,
   body .wrapper .app .content .detail-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: flex-start;
   }
   body .wrapper .app .content .input-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
   }
   body .wrapper .app .content .input-box .input-box-class {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     padding: 0.4em;
   }
   body .wrapper .app .content .input-box .input-box-class p {
@@ -1200,40 +926,35 @@ header .nav-bar nav ul li a span img {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #a0a0a0 1px solid;
+    border: rgb(160, 160, 160) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-    background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     margin-right: 1em;
     padding: 0;
     width: 20px;
     height: 20px;
     min-width: 0;
-    color: #f3419b;
+    color: rgb(243, 65, 155);
     font-size: 1.15em;
     line-height: 0;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    transform: scale(1.2);
   }
   body .wrapper .app .content .input-box .input-box-class .priceBtn:active {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #e2056f 1px solid;
+    border: rgb(226, 5, 111) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    text-shadow: -0.75px -0.75px 0 #e2056f, 0.75px -0.75px 0 #e2056f, -0.75px 0.75px 0 #e2056f, 0.75px 0.75px 0 #e2056f, 2px 2px 2px #e2056f;
+    text-shadow: -0.75px -0.75px 0 rgb(226, 5, 111), 0.75px -0.75px 0 rgb(226, 5, 111), -0.75px 0.75px 0 rgb(226, 5, 111), 0.75px 0.75px 0 rgb(226, 5, 111), 2px 2px 2px rgb(226, 5, 111);
     color: white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffb5ce), color-stop(52%, #f2f2f2), color-stop(54%, #ff4783));
-    background: linear-gradient(#ffb5ce 50%, #f2f2f2 52%, #ff4783 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 181, 206) 50%, rgb(242, 242, 242) 52%, rgb(255, 71, 131) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     margin-right: 1em;
     padding: 0;
     width: 20px;
@@ -1241,32 +962,21 @@ header .nav-bar nav ul li a span img {
     min-width: 0;
     font-size: 1.15em;
     line-height: 0;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    transform: scale(1.2);
   }
   body .wrapper .app .content .discount-and-type-box {
     width: 100%;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: start;
+    align-items: flex-start;
     padding-top: 0.5em;
     width: 100%;
-    border-bottom: #d2d2d2 1px solid;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class p {
     width: 100%;
@@ -1275,27 +985,16 @@ header .nav-bar nav ul li a span img {
   body .wrapper .app .content .discount-and-type-box .set-type-box-class .set-type-box-class-item {
     width: 50%;
     max-width: 250px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class .set-type-box-class-item label {
     padding: 0.5em 0;
     width: 40%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     line-height: 1em;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class .set-type-box-class-item input {
@@ -1308,38 +1007,24 @@ header .nav-bar nav ul li a span img {
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class #lowestCharge.set-type-box-class-item {
     max-height: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class #lowestCharge.set-type-box-class-item.active {
-    -webkit-transition: all 50ms ease;
     transition: all 50ms ease;
     max-height: none;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     width: 50%;
     max-width: 250px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class #lowestCharge.set-type-box-class-item.active label {
     padding: 0.5em 0;
     width: 40%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     line-height: 1em;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class #lowestCharge.set-type-box-class-item.active input {
@@ -1351,17 +1036,10 @@ header .nav-bar nav ul li a span img {
     width: 90%;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class form {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     padding: 1em 0;
     width: 100%;
   }
@@ -1373,23 +1051,18 @@ header .nav-bar nav ul li a span img {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #a0a0a0 1px solid;
+    border: rgb(160, 160, 160) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, white), color-stop(52%, #f2f2f2), color-stop(54%, #dedede));
-    background: linear-gradient(white 50%, #f2f2f2 52%, #dedede 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 255, 255) 50%, rgb(242, 242, 242) 52%, rgb(222, 222, 222) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     width: 100%;
     min-width: 0;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     -webkit-user-select: none;
        -moz-user-select: none;
-        -ms-user-select: none;
             user-select: none;
     cursor: pointer;
   }
@@ -1397,19 +1070,16 @@ header .nav-bar nav ul li a span img {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #e2056f 1px solid;
+    border: rgb(226, 5, 111) 1px solid;
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    text-shadow: -0.75px -0.75px 0 #e2056f, 0.75px -0.75px 0 #e2056f, -0.75px 0.75px 0 #e2056f, 0.75px 0.75px 0 #e2056f, 2px 2px 2px #e2056f;
+    text-shadow: -0.75px -0.75px 0 rgb(226, 5, 111), 0.75px -0.75px 0 rgb(226, 5, 111), -0.75px 0.75px 0 rgb(226, 5, 111), 0.75px 0.75px 0 rgb(226, 5, 111), 2px 2px 2px rgb(226, 5, 111);
     color: white;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffb5ce), color-stop(52%, #f2f2f2), color-stop(54%, #ff4783));
-    background: linear-gradient(#ffb5ce 50%, #f2f2f2 52%, #ff4783 54%);
-    -webkit-box-shadow: 1px 1px 2px #9c9c9c;
-            box-shadow: 1px 1px 2px #9c9c9c;
+    background: linear-gradient(rgb(255, 181, 206) 50%, rgb(242, 242, 242) 52%, rgb(255, 71, 131) 54%);
+    box-shadow: 1px 1px 2px rgb(156, 156, 156);
     -webkit-user-select: none;
        -moz-user-select: none;
-        -ms-user-select: none;
             user-select: none;
   }
   body .wrapper .app .content .discount-and-type-box .set-type-box-class form input[type=radio] {
@@ -1417,45 +1087,26 @@ header .nav-bar nav ul li a span img {
   }
   body .wrapper .app .content .discount-and-type-box #stock-type.set-type-box-class {
     max-height: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
   body .wrapper .app .content .discount-and-type-box #stock-type.set-type-box-class.active {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-transition: all 50ms ease;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     transition: all 50ms ease;
     max-height: none;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    transform: scale(1);
+    align-items: flex-start;
     padding-top: 0.5em;
     width: 100%;
-    border-bottom: #d2d2d2 1px solid;
+    border-bottom: rgb(210, 210, 210) 1px solid;
   }
   body .wrapper .app .content .type-detail-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 250px;
     line-height: 2em;
@@ -1465,12 +1116,8 @@ header .nav-bar nav ul li a span img {
   }
   body .wrapper .app .content .type-detail-box p {
     width: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
   }
   body .wrapper .app .content .type-detail-box span {
     width: 50%;
@@ -1483,34 +1130,23 @@ header .nav-bar nav ul li a span img {
     text-align: center;
   }
   body .wrapper .app .content .detail-box-class .detail-box-item {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
   }
   body .wrapper .app .content .detail-box-class .detail-box-item p {
     width: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     line-height: 1.5em;
   }
   body .wrapper .app .content footer {
     margin: 0.2em;
     padding: 0.2em;
     min-width: 120px;
-    border: #d2d2d2 1px solid;
+    border: rgb(210, 210, 210) 1px solid;
     border-radius: 5px;
     text-shadow: -0.75px -0.75px 0 white, 0.75px -0.75px 0 white, -0.75px 0.75px 0 white, 0.75px 0.75px 0 white, 2px 2px 2px white;
     background-color: white;
@@ -1524,50 +1160,48 @@ header .nav-bar nav ul li a span img {
   body .wrapper .app .content footer #current-version {
     width: 100%;
     text-align: center;
-    color: #a0a0a0;
+    color: rgb(160, 160, 160);
     font-size: 0.6em;
   }
   body .wrapper .app .content footer #current-version span {
     padding-right: 1em;
   }
 }
-
 @media only screen and (min-width: 768px) {
   .grid-m-1 {
-    width: calc(100% / 12 * 1);
+    width: calc(8.3333333333% * 1);
   }
   .grid-m-2 {
-    width: calc(100% / 12 * 2);
+    width: calc(8.3333333333% * 2);
   }
   .grid-m-3 {
-    width: calc(100% / 12 * 3);
+    width: calc(8.3333333333% * 3);
   }
   .grid-m-4 {
-    width: calc(100% / 12 * 4);
+    width: calc(8.3333333333% * 4);
   }
   .grid-m-5 {
-    width: calc(100% / 12 * 5);
+    width: calc(8.3333333333% * 5);
   }
   .grid-m-6 {
-    width: calc(100% / 12 * 6);
+    width: calc(8.3333333333% * 6);
   }
   .grid-m-7 {
-    width: calc(100% / 12 * 7);
+    width: calc(8.3333333333% * 7);
   }
   .grid-m-8 {
-    width: calc(100% / 12 * 8);
+    width: calc(8.3333333333% * 8);
   }
   .grid-m-9 {
-    width: calc(100% / 12 * 9);
+    width: calc(8.3333333333% * 9);
   }
   .grid-m-10 {
-    width: calc(100% / 12 * 10);
+    width: calc(8.3333333333% * 10);
   }
   .grid-m-11 {
-    width: calc(100% / 12 * 11);
+    width: calc(8.3333333333% * 11);
   }
   .grid-m-12 {
-    width: calc(100% / 12 * 12);
+    width: calc(8.3333333333% * 12);
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
