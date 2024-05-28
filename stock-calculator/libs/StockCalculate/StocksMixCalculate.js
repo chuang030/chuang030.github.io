@@ -226,35 +226,35 @@ export default class StocksMixCalculate extends StocksMoreCalculate {
             this.averagePriceArray.push(this.getAveragePrice());
             this.carryingCostsArray.push(this.getCarryingCosts());
         });
-        switch (value) {
-            default: case "all": case 0:
-                return {
-                    buyCharge: this.getMultipleBuyChargeArray(),
-                    costPrice: this.getMultipleBuyCostPriceArray(),
-                    averagePriceArray: this.getMultipleBuyAveragePriceArray(),
-                    carryingCosts: this.getMultipleBuyCarryingCostsArray(),
-                    totalNumberOfPiles: this.getMultipleBuyTotalNumberOfPiles(),
-                    totalPrice: this.getMultipleBuyPrice(),
-                    totalAveragePrice: this.getMultipleBuyAveragePrice(),
-                }
-            case "buyCharge": case 1:
-                return this.getMultipleBuyChargeArray();
-            case "costPrice": case 2:
-                return this.getMultipleBuyCostPriceArray();
-            case "otherTransactionLevy": case 3:
-                return this.getMultipleBuyOtherTransactionLevyArray();
-            case "averagePrice": case 4:
-                return this.getMultipleBuyAveragePriceArray();
-            case "carryingCosts": case 5:
-                return this.getMultipleBuyCarryingCostsArray();
-            case "totalnumberOfPiles": case 6:
-                return this.getMultipleBuyTotalNumberOfPiles();
-            case "totalPrice": case 7:
-                return this.getMultipleBuyPrice();
-            case "totalAveragePrice": case 8:
-                return this.getMultipleBuyAveragePrice();
-        }
-
+        // switch (value) {
+        //     default: case "all": case 0:
+        //         return {
+        //             buyCharge: this.getMultipleBuyChargeArray(),
+        //             costPrice: this.getMultipleBuyCostPriceArray(),
+        //             averagePriceArray: this.getMultipleBuyAveragePriceArray(),
+        //             carryingCosts: this.getMultipleBuyCarryingCostsArray(),
+        //             totalNumberOfPiles: this.getMultipleBuyTotalNumberOfPiles(),
+        //             totalPrice: this.getMultipleBuyPrice(),
+        //             totalAveragePrice: this.getMultipleBuyAveragePrice(),
+        //         }
+        //     case "buyCharge": case 1:
+        //         return this.getMultipleBuyChargeArray();
+        //     case "costPrice": case 2:
+        //         return this.getMultipleBuyCostPriceArray();
+        //     case "otherTransactionLevy": case 3:
+        //         return this.getMultipleBuyOtherTransactionLevyArray();
+        //     case "averagePrice": case 4:
+        //         return this.getMultipleBuyAveragePriceArray();
+        //     case "carryingCosts": case 5:
+        //         return this.getMultipleBuyCarryingCostsArray();
+        //     case "totalnumberOfPiles": case 6:
+        //         return this.getMultipleBuyTotalNumberOfPiles();
+        //     case "totalPrice": case 7:
+        //         return this.getMultipleBuyPrice();
+        //     case "totalAveragePrice": case 8:
+        //         return this.getMultipleBuyAveragePrice();
+        // }
+        return this;
     }
 
     /**

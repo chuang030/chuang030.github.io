@@ -1,6 +1,6 @@
 <script setup>
-import { reactive, ref, watch } from 'vue';
-import securitiesFirmsRate from '../../data/SecuritiesFirmsRate.json'
+import { reactive, watchEffect } from 'vue';
+import StocksSearchBox from './StocksSearchBox.vue'
 
 const modelBox = reactive({
     simple: true,
@@ -8,31 +8,74 @@ const modelBox = reactive({
     sttingInstructionIsShow: false
 })
 
+const otherSetting = reactive({
+    isNeglectCharge    : false,
+    isStocksIdGetPrice : false
+})
+
 const modelBoxItemIsShow = () => {
     modelBox.simple = !modelBox.simple,
-    modelBox.full = !modelBox.full
+    modelBox.full   = !modelBox.full
 }
+
+const corsAnywhereStatus = reactive({
+    isOk      : false,
+    status    : -1,
+    statusText: ""
+})
+
+const stocksData = reactive({
+    id        : null,
+    price     : null,
+    searchTime: null
+})
 
 const showSttingInstruction = () => {
     modelBox.sttingInstructionIsShow = !modelBox.sttingInstructionIsShow
 }
 
-const securitiesFirms = ref(1);
-
-const securitiesFirmsSelect = (selected) => {
-    securitiesFirms.value = selected
+const isNeglectCharge = () => {
+    otherSetting.isNeglectCharge = !otherSetting.isNeglectCharge
 }
 
-const emit = defineEmits(['update'])
+const isStocksIdGetPrice = () => {
+    otherSetting.isStocksIdGetPrice = !otherSetting.isStocksIdGetPrice
+    checkCors(true)
+}
 
-watch([
-    modelBox,
-    securitiesFirms
-],
-(data) => {
-    emit('update', {
-        modelBox: data[0],
-        securitiesFirms: data[1]
+const checkCors = async (data) => {
+    if (data) {
+        await fetch("https://cors-anywhere.herokuapp.com/")
+            .then(data => {
+                corsAnywhereStatus.isOk = data.ok;
+                corsAnywhereStatus.status = data.status;
+                corsAnywhereStatus.statusText = data.statusText;
+            })
+            .catch(error => console.error(error))
+    }
+}
+
+const stocksDataUpdate = (data) => {
+    stocksData.id         = data.id
+    stocksData.price      = data.price
+    stocksData.statusText = data.statusText
+}
+
+const emit = defineEmits(['modelUpdate', 'otherUpdate' , 'stocksDataUpdate'])
+
+watchEffect(() => {
+    emit('modelUpdate', {
+        simple                  : modelBox.simple,
+        full                    : modelBox.full,
+        sttingInstructionIsShow : modelBox.sttingInstructionIsShow
+    })
+    emit('otherUpdate', {
+        isNeglectCharge: otherSetting.isNeglectCharge
+    })
+    emit('stocksDataUpdate', {
+        id         : stocksData.id,
+        price      : stocksData.price,
+        searchTime : stocksData.searchTime
     })
 })
 
@@ -53,15 +96,33 @@ watch([
                 </div>
             </div>
             <div id="icon" class="set-model-box-item" @click="showSttingInstruction"
-                :class="{ active: modelBox.sttingInstructionIsShow }"><i class="fas fa-exclamation"></i></div>
+                :class="{ active: modelBox.sttingInstructionIsShow }">
+                <i class="fas fa-exclamation"></i>
+            </div>
         </div>
-        <div class="securities-firms-box">
-            <label for="securitiesFirms">選擇券商：</label>
-            <select id="securitiesFirms" name="securitiesFirms"
-                v-model.number="securitiesFirms" @change="securitiesFirmsSelect(securitiesFirms)">
-                <option value="0">無</option>
-                <option v-for="(data, key) in securitiesFirmsRate.data" :key="key" :value="key + 1">{{ data.name }}</option>
-            </select>
+        <div class="other-setting">
+            <div class="other-setting-title">
+                <div class="title-box">
+                    <h4>其他</h4>
+                </div>
+            </div>
+            <div class="other-setting-item-box">
+                <div class="other-setting-item">
+                    <label for="isNeglectCharge">是否忽略買入手續費</label>
+                    <input type="checkbox" name="isNeglectCharge" id="isNeglectCharge"
+                        @click="isNeglectCharge">
+                </div>
+                <div class="other-setting-item">
+                    <label for="isStocksIdGetPrice">以股票代號取得價格</label>
+                    <input type="checkbox" name="isStocksIdGetPrice" id="isStocksIdGetPrice"
+                        @click="isStocksIdGetPrice">
+                        <StocksSearchBox 
+                            :class="{active: otherSetting.isStocksIdGetPrice}"
+                            :corsAnywhereStatus="corsAnywhereStatus"
+                            @checkCors="checkCors"
+                            @stocksDataUpdate="stocksDataUpdate" />
+                </div>
+            </div>
         </div>
     </div>
 </template>

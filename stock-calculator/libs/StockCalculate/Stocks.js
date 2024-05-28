@@ -256,14 +256,32 @@ export default class Stocks {
         return this.meansOfTransaction;
     }
 
+     /**
+     * 設定整股最低手續費
+     * @param {Number} boardLotLowestCharge 輸入整股最低手續費(預設20元)
+     */
+    setBoardLotLowestCharge(boardLotLowestCharge) {
+        this.setLowestCharge(boardLotLowestCharge, undefined);
+    }
+
+    /**
+     * 設定零股最低手續費
+     * @param {Number} oddLotLowestCharge 輸入零股最低手續費(預設1元)
+     */
+    setOddLotLowestCharge(oddLotLowestCharge) {
+        this.setLowestCharge(undefined, oddLotLowestCharge);
+    }
+
     /**
      * 設定最低手續費
      * @param {Number} boardLotLowestCharge 輸入整股最低手續費(預設20元)
      * @param {Number} oddLotLowestCharge 輸入零股最低手續費(預設1元)
      */
-    setLowestCharge(boardLotLowestCharge = 20, oddLotLowestCharge = 1) {
-        this.boardLotLowestCharge = boardLotLowestCharge;
-        this.oddLotLowestCharge = oddLotLowestCharge;
+    setLowestCharge(boardLotLowestCharge, oddLotLowestCharge) {
+        if (boardLotLowestCharge != null || boardLotLowestCharge != undefined)
+            this.boardLotLowestCharge = boardLotLowestCharge;
+        if (oddLotLowestCharge != null || oddLotLowestCharge != undefined)
+            this.oddLotLowestCharge = oddLotLowestCharge;
     }
 
     /**

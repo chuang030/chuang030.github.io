@@ -1,9 +1,15 @@
 $themeColor          : rgb(243, 65, 155);
+$themeRemoveColor    : rgb(200, 200, 200);
 $themeColorLight     : rgb(255, 181, 206);
 $themeColorDark      : rgb(226, 5, 111);
 $themeColorBtnActive : rgb(255, 71, 131);
 $themeBorderColor    : rgba(210, 210, 210, 1);
 $themeBorderStyle    : $themeBorderColor 1px solid;
+$themeBorderRadius   : 5px;
+$themeScreenSmall    : 320px;
+$themeScreenmMedium  : 768px;
+$themeScreenmLarge   : 1200px;
+$contentWidth        : 720px;
 
 @mixin theme-btn-style {
     margin       : 0.2em;
@@ -29,7 +35,7 @@ $themeBorderStyle    : $themeBorderColor 1px solid;
     padding      : 0.2em;
     min-width    : 120px;
     border       : $themeColorDark 1px solid;
-    border-radius: 5px;
+    border-radius: $themeBorderRadius;
     font-weight  : bold;
     text-align   : center;
     text-shadow  :
@@ -49,7 +55,7 @@ $themeBorderStyle    : $themeBorderColor 1px solid;
     padding      : 0.2em;
     min-width    : 120px;
     border       : $themeBorderStyle;
-    border-radius: 5px;
+    border-radius: $themeBorderRadius;
     text-shadow  :
         -0.75px -0.75px 0 white,
         0.75px -0.75px 0 white,
@@ -60,8 +66,43 @@ $themeBorderStyle    : $themeBorderColor 1px solid;
     background-color: white;
 }
 
+@mixin theme-checkbox-style {
+    width           : 3em;
+    height          : 1.5em;
+    background-color: white;
+    border          : $themeBorderStyle;
+    border-radius   : 25px;
+    display         : flex;
+    align-items     : center;
+    
+    &::before {
+        content         : "";
+        margin-left     : 4px;
+        width           : 1em;
+        height          : 1em;
+        display         : block;
+        // background-color: white;
+        background-color: $themeColorLight;
+        border-radius   : 100%;
+        transition      : all ease 250ms;
+    }
+    
+    &:checked {
+        background-color: $themeColorLight;
+
+
+        &::before {
+            content         : "";
+            transform       : translateX(calc(1em + 3px));
+            // background-color: $themeColorBtnActive;
+            background-color: white;
+            transition      : all ease 250ms;
+        }
+    }
+}
 
 @mixin theme-box-display {
+    padding        : 5px;
     display        : flex;
     flex-wrap      : wrap;
     justify-content: flex-start;
@@ -98,15 +139,15 @@ body {
     }
 
     .wrapper {
-        display                 : flex;
-        flex-wrap               : wrap;
-        justify-content         : center;
+        display        : flex;
+        flex-wrap      : wrap;
+        justify-content: center;
 
         .top-box {
             @include theme-box-display;
             margin-top               : 0.2em;
             width                    : 90%;
-            max-width                : 280px;
+            max-width                : 310px;
             background-color         : white;
             border-radius            : 25px;
             border-top-left-radius   : 90px;
@@ -121,8 +162,25 @@ body {
 
         .content {
             margin-top: 40px;
-            width     : 90vw;
+            width     : 90%;
+            max-width : $contentWidth;
         }
+
+        @media only screen and (min-width: $themeScreenmMedium) {
+            .top-box {
+                display: none;
+            }
+
+            .content {
+                margin-top: 0;
+            }
+        }
+
+        // @media only screen and (min-width: $themeScreenmLarge) {
+        //     .content {
+        //         margin-top: 0;
+        //     }
+        // }
     }
 }
 

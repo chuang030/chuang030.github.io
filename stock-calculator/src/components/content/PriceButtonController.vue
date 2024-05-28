@@ -3,13 +3,12 @@ import { ref, watchEffect } from 'vue';
 
 const props = defineProps({
     inputPrice: {
-        type: Number,
-        default: null
+        type: Number
     }
 })
-const emit = defineEmits(['priceUpdate', 'valueClear'])
+const emit = defineEmits(['priceUpdate', 'valueClear']);
 
-const price = ref(null)
+const price = ref(null);
 
 watchEffect(() => {
     price.value = props.inputPrice
@@ -51,8 +50,8 @@ const valueClear = () => {
 
     emit('valueClear', {
         buyBoardLot: null,
-        buyOddLot: null,
-        newPrice: price.value
+        buyOddLot  : null,
+        newPrice   : price.value
     })
 }
 

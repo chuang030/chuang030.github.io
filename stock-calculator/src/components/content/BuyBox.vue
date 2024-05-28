@@ -1,58 +1,34 @@
 <script setup>
 import { reactive, watchEffect } from 'vue'
-import { StocksMoreCalculate } from '../../../libs/StockCalculate/main'
 import PriceButtonController from './PriceButtonController.vue'
-
-const props = defineProps({
-    stockCalculate: {
-        type: StocksMoreCalculate,
-        default: null
-    }
-})
 
 const emit = defineEmits(['update'])
 
 const calculationData = reactive({
     buyBoardLot: null,
-    buyOddLot: null,
-    sharePrice: null,
-    buyDiscount: 6,
-    boardLotBaseCharge: 20,
-    oddLottBaseCharge: 1,
-    buyCharge: null,
-    carryingCosts: null,
-    costPrice: null,
-    averagePrice: null,
+    buyOddLot  : null,
+    sharePrice : null,
 })
 
 watchEffect(() => {
+    if (calculationData.buyBoardLot < 0)
+        calculationData.buyBoardLot = 0
+
+    if (calculationData.buyOddLot < 0)
+        calculationData.buyOddLot = 0
+
+    if (calculationData.buyOddLot > 999)
+        calculationData.buyOddLot = 999
+
+    if (calculationData.sharePrice < 0)
+        calculationData.sharePrice = 0
+
     emit('update', {
         buyBoardLot: calculationData.buyBoardLot,
-        buyOddLot: calculationData.buyOddLot,
-        sharePrice: calculationData.sharePrice,
-        buyDiscount: calculationData.buyDiscount,
-        boardLotBaseCharge: calculationData.boardLotBaseCharge,
-        oddLottBaseCharge: calculationData.oddLottBaseCharge,
-        buyCharge: calculationData.buyCharge,
-        carryingCosts: calculationData.carryingCosts,
-        costPrice: calculationData.costPrice,
-        averagePrice: calculationData.averagePrice
+        buyOddLot  : calculationData.buyOddLot,
+        sharePrice : calculationData.sharePrice,
     })
 })
-
-const sc = props.stockCalculate
-
-const stockCalculation = () => {
-    sc.setCost(calculationData.sharePrice === null ? 0 : calculationData.sharePrice);
-    sc.setNumberOfPilesDetailed(calculationData.buyBoardLot === null ? 0 : calculationData.buyBoardLot, 
-                                calculationData.buyOddLot === null ? 0 : calculationData.buyOddLot);
-    sc.setLowestCharge(calculationData.boardLotBaseCharge, calculationData.oddLottBaseCharge);
-    sc.setChargeDiscount(calculationData.buyDiscount);
-    calculationData.buyCharge = sc.getBuyCharge();
-    calculationData.carryingCosts = sc.getCarryingCosts();
-    calculationData.costPrice = sc.getCostPrice();
-    calculationData.averagePrice = sc.getAveragePrice();
-}
 
 const priceUpdate = (data) => {
     calculationData.sharePrice = data
@@ -60,9 +36,10 @@ const priceUpdate = (data) => {
 
 const valueClear = (data) => {
     calculationData.buyBoardLot = data.buyBoardLot
-    calculationData.buyOddLot = data.buyOddLot
-    calculationData.sharePrice = data.newPrice
+    calculationData.buyOddLot   = data.buyOddLot
+    calculationData.sharePrice  = data.newPrice
 }
+
 
 </script>
 
@@ -73,26 +50,26 @@ const valueClear = (data) => {
         </div>
         <div class="input-box">
             <div class="input-box-class">
-                <label>整股：</label>
-                <input type="number" id="buyBoardLot" v-model.number="calculationData.buyBoardLot"
-                    @input="stockCalculation()" min="0">
+                <label for="buyBoardLot">整股：</label>
+                <input type="number" id="buyBoardLot"
+                    v-model.number="calculationData.buyBoardLot">
                 <span>張</span>
             </div>
             <div class="input-box-class">
-                <label>零股：</label>
-                <input type="number" id="buyOddLot" v-model.number="calculationData.buyOddLot"
-                    @input="stockCalculation()" min="0" max="999">
+                <label for="buyOddLot">零股：</label>
+                <input type="number" id="buyOddLot"
+                    v-model.number="calculationData.buyOddLot">
                 <span>股</span>
             </div>
             <div class="input-box-class">
-                <label>買價：</label>
-                <input type="number" id="sharePrice" v-model.number="calculationData.sharePrice"
-                    @input="stockCalculation()" min="0">
+                <label for="sharePrice">買價：</label>
+                <input type="number" id="sharePrice"
+                    v-model.number="calculationData.sharePrice">
                 <span>元</span>
             </div>
             <PriceButtonController 
                 :inputPrice="calculationData.sharePrice"
-                @click="stockCalculation()" @priceUpdate="priceUpdate" @valueClear="valueClear"/>
+                 @priceUpdate="priceUpdate" @valueClear="valueClear"/>
         </div>
     </div>
 </template>

@@ -1,18 +1,18 @@
 @mixin content-stock-style {
-    .state-box {
-        @include theme-box-display;
-        background-image   : url(../images/Box/StateBox/bg.webp);
-        background-position: center;
-        background-size    : cover;
+    // .state-box {
+    //     @include theme-box-display;
+    //     background-image   : url(../images/Box/StateBox/bg.webp);
+    //     background-position: center;
+    //     background-size    : cover;
 
-        .state-box-title {
-            width: 80%;
-        }
+    //     .state-box-title {
+    //         width: 80%;
+    //     }
 
-        .state-img {
-            width: 20%;
-        }
-    }
+    //     .state-img {
+    //         width: 20%;
+    //     }
+    // }
 
     .stock-box {
         background-image   : url(../images/Box/StockBox/bg.webp);
@@ -80,28 +80,6 @@
         }
     }
 
-    .hint-box {
-
-        p {
-
-            span {
-                color: $themeColor;
-            }
-        }
-
-        iframe {
-            width        : 100%;
-            height       : 200px;
-            border       : $themeBorderStyle;
-            border-radius: 5px;
-        }
-
-        .hint-box-continue-btn {
-            @include theme-btn-style;
-            max-width: 300px;
-        }
-    }
-
     .affirm-box {
         line-height        : 1.5em;
         background-image   : url(../images/Box/AffirmBox/bg.webp);
@@ -127,6 +105,7 @@
     .setting-box {
         @include theme-box-display;
         @include theme-box-style;
+        padding: 5px;
 
         .set-model-box {
             @include theme-box-display;
@@ -163,16 +142,16 @@
                 #full {
                     border-radius: 0 5px 5px 0;
                 }
+            }
 
-                &:nth-last-of-type(1) {
-                    @include theme-box-display;
-                    justify-content: center;
-                    width          : 25px;
-                    height         : 25px;
-                    color          : $themeColor;
-                    border-radius  : 50%;
-                    transform      : scale(0.8);
-                }
+            .set-model-box-item[id="icon"] {
+                @include theme-box-display;
+                justify-content: center;
+                width          : 25px;
+                height         : 25px;
+                color          : $themeColor;
+                border-radius  : 50%;
+                transform      : scale(0.8);
             }
 
             #icon.set-model-box-item.active {
@@ -187,13 +166,200 @@
             }
         }
 
-        .securities-firms-box {
-            @include theme-box-display;
-            width: 100%;
+        .other-setting {
+            padding: 5px;
+            width  : 100%;
 
-            select {
-                margin : 0.2em;
-                padding: 0.2em;
+            .other-setting-item-box {
+
+                .other-setting-item {
+                    padding    : 5px;
+                    display    : flex;
+                    flex-wrap  : wrap;
+                    align-items: center;
+
+                    label {
+                        height      : 1.5em;
+                        margin-right: 0.5em;
+                    }
+
+                    input[type="checkbox"] {
+                        @include theme-checkbox-style;
+                    }
+
+                    .stocks-search-box {
+                        @include theme-not-show-animation;
+                        margin-top     : 5px;
+                        width          : 100%;
+                        display        : flex;
+                        flex-wrap      : wrap;
+                        justify-content: flex-start;
+
+                        .stocks-search-box-item {
+                            position       : relative;
+                            width          : 100%;
+                            display        : flex;
+                            flex-wrap      : wrap;
+                            align-items    : center;
+                            justify-content: flex-start;
+
+                            .search-input-box {
+                                width    : 30%;
+                                min-width: 200px;
+                            }
+
+                            .search-tiem-box {
+                                width: 100%;
+                            }
+
+                            .loading-box {
+                                width     : 10%;
+                                opacity   : 0;
+                                transition: opacity 200ms ease-out;
+                            }
+
+                            .loading-box.active {
+                                opacity   : 100%;
+                                transition: opacity 200ms ease-in;
+                            }
+
+                            input {
+                                max-width: 70px;
+                            }
+
+                            p {
+                                font-size: 0.8em;
+                            }
+
+                            .stocks-search-btn {
+                                @include theme-btn-style;
+                                margin   : 0 0 0 5px;
+                                padding  : 0.1em;
+                                min-width: 50px;
+                                cursor   : pointer;
+
+                                &:active {
+                                    @include theme-btn-style-active;
+                                    margin   : 0 0 0 5px;
+                                    padding  : 0.1em;
+                                    min-width: 50px;
+                                }
+                            }
+
+                            @media only screen and (min-width: $themeScreenmMedium) {
+
+                                .search-input-box {
+                                    width: 30%;
+                                }
+
+                                .search-tiem-box {
+                                    width: 30%;
+                                }
+
+                                .search-id {
+                                    width: 20%;
+                                }
+
+                                .loading-box {
+                                    width : 10%;
+                                    bottom: 5%;
+                                    right : 10%;
+                                }
+
+                            }
+
+                            /* ------------------------------------------------------------------------------------ */
+                            /* 
+                             * The Dots CSS Loaders Collection
+                             * from https://css-loaders.com/dots/
+                             */
+                            .loader {
+                                width       : 50px;
+                                aspect-ratio: 2;
+                                --_g        : no-repeat radial-gradient(circle closest-side, #ffb5ce 90%, #0000);
+                                background  :
+                                    var(--_g) 0% 50%,
+                                    var(--_g) 50% 50%,
+                                    var(--_g) 100% 50%;
+                                background-size: calc(100%/3) 50%;
+                                animation      : l3 1s infinite linear;
+                                transform      : scale(0.6);
+                            }
+
+                            @keyframes l3 {
+                                20% {
+                                    background-position: 0% 0%, 50% 50%, 100% 50%
+                                }
+
+                                40% {
+                                    background-position: 0% 100%, 50% 0%, 100% 50%
+                                }
+
+                                60% {
+                                    background-position: 0% 50%, 50% 100%, 100% 0%
+                                }
+
+                                80% {
+                                    background-position: 0% 50%, 50% 50%, 100% 100%
+                                }
+                            }
+
+                            /* ------------------------------------------------------------------------------------ */
+
+                        }
+
+                        .stocks-search-box-item[id="stocks-search-input-box"],
+                        .stocks-search-box-item[id="search-tiem-box"] {
+                            @include theme-not-show-animation;
+                        }
+
+                        .stocks-search-box-item[id="stocks-search-input-box"].active,
+                        .stocks-search-box-item[id="search-tiem-box"].active {
+                            @include theme-show-animation;
+                        }
+
+                        #hint-box {
+                            width: 100%;
+
+                            p {
+
+                                span {
+                                    color: $themeColor;
+                                }
+                            }
+
+                            iframe {
+                                width        : 100%;
+                                height       : 200px;
+                                border       : $themeBorderStyle;
+                                border-radius: 5px;
+                            }
+
+                            .hint-box-continue-btn {
+                                @include theme-btn-style;
+                                cursor     : pointer;
+                                user-select: none;
+
+                                &:active {
+                                    @include theme-btn-style-active;
+                                }
+
+                                max-width: 300px;
+                            }
+
+                            @media only screen and (min-width: $themeScreenmMedium) {
+                                iframe {
+                                    height: 150px;
+                                }
+                            }
+
+                        }
+                    }
+
+                    .stocks-search-box.active {
+                        @include theme-show-animation;
+                    }
+                }
             }
         }
     }
@@ -264,7 +430,7 @@
 
         .input-box-class {
             @include theme-box-display;
-            padding: 0.4em;
+            padding-right: 0.5em;
 
             p {
                 display: inline;
@@ -272,7 +438,7 @@
 
             input {
                 max-width: 70px;
-                cursor: pointer
+                cursor   : pointer
             }
 
             .priceBtn {
@@ -309,11 +475,11 @@
 
         .set-type-box-class {
             @include theme-box-display;
-            justify-content: space-around;
-            align-items  : flex-start;
-            padding-top  : 0.5em;
-            width        : 100%;
-            border-bottom: $themeBorderStyle;
+            justify-content: space-between;
+            align-items    : flex-start;
+            padding-top    : 0.5em;
+            width          : 100%;
+            border-bottom  : $themeBorderStyle;
 
             p {
                 width      : 100%;
@@ -321,8 +487,8 @@
             }
 
             .set-type-box-class-item {
-
-                width          : 50%;
+                padding-top    : 10px;
+                width          : 100%;
                 max-width      : 250px;
                 display        : flex;
                 flex-wrap      : wrap;
@@ -354,7 +520,7 @@
 
             #lowestCharge.set-type-box-class-item.active {
                 @include theme-show-animation;
-                width          : 50%;
+                width          : 100%;
                 max-width      : 250px;
                 display        : flex;
                 flex-wrap      : wrap;
@@ -377,6 +543,17 @@
                     margin : 0.5em 0;
                     padding: 0.5em;
                     width  : 90%;
+                }
+            }
+
+            @media only screen and (min-width: $themeScreenmMedium) {
+                .set-type-box-class-item {
+                    padding-top: 0;
+                    width      : 50%;
+                }
+
+                #lowestCharge.set-type-box-class-item.active {
+                    width: 50%;
                 }
             }
 
@@ -446,8 +623,6 @@
         }
     }
 
-
-
     .detail-box-class {
         width: 50%;
 
@@ -465,6 +640,10 @@
                 justify-content: space-between;
                 line-height    : 1.5em;
             }
+        }
+
+        .detail-box-item.remove {
+            color: $themeRemoveColor;
         }
     }
 

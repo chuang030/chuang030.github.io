@@ -1,7 +1,6 @@
-@import "reset", "grid", "space", "themeStyle", "header", "topBoxStyle", "contentBoxStyle", "footerStyle";
+@import "reset", "themeStyle", "header", "topBoxStyle", "contentBoxStyle", "footerStyle";
 
-@media only screen and (min-width: 320px) {
-    @include phone-grid-s;
+@media only screen and (min-width: $themeScreenSmall) {
 
     body {
 
@@ -19,13 +18,6 @@
                     @include footer-calculation-style;
                 }
             }
-            // .app {
-
-            // }
         }
     }
-}
-
-@media only screen and (min-width: 768px) {
-    @include table-grid;
 }

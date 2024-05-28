@@ -40,6 +40,14 @@ export default class StocksMoreCalculate extends Stocks {
     }
 
     /**
+     * 設置是否忽略買入手續費
+     * @param {Boolean} isNeglect 是否忽略
+     */
+    setIsNeglectBuyCharge(isNeglect) {
+        this.isNeglectBuyCharge = Boolean(isNeglect);
+    }
+
+    /**
      * 取得成交均價
      * 1.均價：取小數點後2位四捨五入((買進成交價金+手續費)/股數)\
      * 2.如果：購買價金、手續費、股數為0，則均價為0元

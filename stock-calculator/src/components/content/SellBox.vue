@@ -1,51 +1,29 @@
 <script setup>
-import { computed, reactive, ref, watchEffect } from 'vue'
-import { StocksMoreCalculate } from '../../../libs/StockCalculate/main'
+import { reactive, watchEffect } from 'vue'
 import PriceButtonController from './PriceButtonController.vue'
 
 const props = defineProps({
-    stockCalculate: {
-        type: StocksMoreCalculate,
-        default: null
+    marketCosts: {
+        type: Number
     }
 })
 
 const emit = defineEmits(['update'])
 
 const calculationData = reactive({
-    sellCharge: null,
-    taxes: null,
     marketCosts: null,
-    marketValue: null,
-    anticipatedRevenue: null,
-    profitAndLoss: null,
-    profitAndLossPercentage: null
 })
 
 watchEffect(() => {
-    emit('update', {
-        sellCharge: calculationData.sellCharge,
-        taxes: calculationData.taxes,
-        marketCosts: calculationData.marketCosts,
-        marketValue: calculationData.marketValue,
-        anticipatedRevenue: calculationData.anticipatedRevenue,
-        profitAndLoss: calculationData.profitAndLoss,
-        profitAndLossPercentage: calculationData.profitAndLossPercentage
-    })
+    calculationData.marketCosts = props.marketCosts
 })
 
-const sc = props.stockCalculate
+watchEffect(() => {
+    if (calculationData.marketCosts < 0)
+        calculationData.marketCosts = 0
 
-const stockCalculation = () => {
-    sc.setMarketPrice(calculationData.marketCosts === null ? 0 : calculationData.marketCosts);
-    sc.setType(calculationData.stockType);
-    calculationData.sellCharge = sc.getSellCharge();
-    calculationData.taxes = sc.getTaxes();
-    calculationData.marketValue = sc.getMarketValue();
-    calculationData.anticipatedRevenue = sc.getAnticipatedRevenue();
-    calculationData.profitAndLoss = sc.getProfitAndLoss();
-    calculationData.profitAndLossPercentage = sc.getProfitAndLossPercentage();
-}
+    emit('update', { marketCosts: calculationData.marketCosts })
+})
 
 const priceUpdate = (data) => {
     calculationData.marketCosts = data
@@ -63,15 +41,14 @@ const valueClear = (data) => {
         </div>
         <div class="input-box">
             <div class="input-box-class">
-                <label>賣價：</label>
-                <input type="number" id="marketCosts" v-model.number="calculationData.marketCosts"
-                    @input="stockCalculation()" min="0">
+                <label for="marketCosts">賣價：</label>
+                <input type="number" id="marketCosts" 
+                    v-model.number="calculationData.marketCosts">
                 <span>元</span>
             </div>
             <PriceButtonController 
                 :inputPrice="calculationData.marketCosts"
-                @click="stockCalculation()" @priceUpdate="priceUpdate" @valueClear="valueClear" />
-
+                @priceUpdate="priceUpdate" @valueClear="valueClear" />
         </div>
     </div>
 </template>
