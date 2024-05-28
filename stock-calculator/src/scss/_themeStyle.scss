@@ -123,7 +123,7 @@ $contentWidth        : 720px;
 body {
     position             : relative;
     height               : 100vh;
-    background           : url(/images/bg/bgPattern.webp);
+    background           : url(/src/images/bg/bgPattern.webp);
     background-attachment: fixed;
 
     &::-webkit-scrollbar {

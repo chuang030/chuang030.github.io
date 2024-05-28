@@ -1,5 +1,10 @@
 <script setup>
 import { ref } from 'vue';
+import TitleIconImg from '../images/icon/TitleIcon.webp'
+import HomeImg from '../images/icon/Home.webp'
+import MoneyRecordImg from '../images/icon/MoneyRecord.webp'
+import AccountImg from '../images/icon/Account.webp'
+import DescriptionImg from '../images/icon/Description.webp'
 
 const navBarState = ref(false);
 
@@ -15,21 +20,21 @@ const navButtonClick = () => {
         </div>
         <div id="nav-bar" class="nav-bar" :class="{'nav-open' : navBarState}" >
             <nav>
-                <div class="nav-title"><span><img src="images/icon/TitleIcon.webp" alt=""></span>
+                <div class="nav-title"><span><img :src='TitleIconImg' alt=""></span>
                     <p>メニュー</p>
                 </div>
                 <ul>
                     <li class="active">
-                        <a href="javascript:void(0)"><span><img src="/images/icon/Home.webp" alt=""></span>　損益計算</a>
+                        <a href="javascript:void(0)"><span><img :src='HomeImg' alt=""></span>　損益計算</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)"><span><img src="/images/icon/MoneyRecord.webp" alt=""></span>　筆記</a>
+                        <a href="javascript:void(0)"><span><img :src='MoneyRecordImg' alt=""></span>　筆記</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)"><span><img src="/images/icon/Account.webp" alt=""></span>　分帳戶</a>
+                        <a href="javascript:void(0)"><span><img :src='AccountImg' alt=""></span>　分帳戶</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)"><span><img src="/images/icon/Description.webp" alt=""></span>　本站說明</a>
+                        <a href="javascript:void(0)"><span><img :src='DescriptionImg' alt=""></span>　本站說明</a>
                     </li>
                     <li id="nav-close-btn">
                         <a href="javascript:void(0)" @click="navButtonClick()">關閉</a>
