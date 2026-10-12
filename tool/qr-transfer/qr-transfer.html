@@ -70,6 +70,8 @@ button:focus-visible, select:focus-visible, input:focus-visible, label.drop:focu
 .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn.primary:hover { filter: brightness(1.06); }
 .btn:disabled { opacity: .5; cursor: default; }
+.jump { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: .9rem; }
+.jump input { font: inherit; font-family: var(--font-mono); width: 7em; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
 
 label.drop { display: grid; gap: 2px; justify-items: center; text-align: center; border: 1.5px dashed var(--line); border-radius: var(--radius); padding: 18px 12px; cursor: pointer; }
 label.drop.over { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
@@ -118,6 +120,8 @@ pre.textprev { margin: 0; max-height: 180px; overflow: auto; background: var(--b
 .toast { font-size: .85rem; color: var(--warn); }
 .legend { display: flex; gap: 14px; font-size: .8rem; color: var(--muted); }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.missing { font-size: .85rem; color: var(--muted); overflow-wrap: anywhere; }
+.missing b { color: var(--fg); font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) { .bar i, .guide { transition: none; } }
 </style>
 <style>body{margin:0}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
@@ -150,6 +154,12 @@ pre.textprev { margin: 0; max-height: 180px; overflow: auto; background: var(--b
         <button class="btn" id="btn-restart">從頭播放</button>
         <button class="btn" id="btn-full">全螢幕</button>
       </div>
+      <div class="jump">
+        <label for="jump-no">指定區塊</label>
+        <input type="number" id="jump-no" min="1" max="1" step="1" value="1" inputmode="numeric" required>
+        <span class="hint mono" id="jump-max">/ —</span>
+        <button class="btn" id="btn-jump">顯示這張</button>
+      </div>
     </div>
 
     <div class="col">
@@ -161,6 +171,8 @@ pre.textprev { margin: 0; max-height: 180px; overflow: auto; background: var(--b
         </label>
         <dl class="facts">
           <dt>檔案</dt><dd id="f-name">—</dd>
+          <dt>路徑</dt><dd id="f-path">—</dd>
+          <dt>修改時間</dt><dd class="mono" id="f-mtime">—</dd>
           <dt>大小</dt><dd class="mono" id="f-size">—</dd>
           <dt>區塊數</dt><dd class="mono" id="f-blocks">—</dd>
           <dt>QR 版本</dt><dd class="mono" id="f-version">—</dd>
@@ -238,6 +250,7 @@ pre.textprev { margin: 0; max-height: 180px; overflow: auto; background: var(--b
         <div class="bar" id="recv-bar"><i></i></div>
         <canvas id="grid" height="40" aria-label="區塊接收狀態"></canvas>
         <div class="legend"><span><i style="background:var(--accent)"></i>已還原</span><span><i style="background:var(--track)"></i>尚缺</span></div>
+        <p class="missing" id="r-missing" hidden></p>
         <dl class="facts">
           <dt>檔案</dt><dd id="r-name">—</dd>
           <dt>區塊</dt><dd class="mono" id="r-blocks">—</dd>
@@ -12980,10 +12993,17 @@ var QRT = (function () {
     };
   }
 
-  async function loadFile(bytes, name, mime) {
+  // info: { path, mtime } — browsers hide the real path for privacy; only
+  // Electron-style File.path or a folder pick's webkitRelativePath expose one.
+  async function loadFile(bytes, name, mime, info) {
+    info = info || {};
     S.bytes = bytes; S.name = name; S.mime = mime || "application/octet-stream";
     S.sha = await sha256(bytes);
     $("f-name").textContent = name;
+    var pathEl = $("f-path");
+    pathEl.className = info.path ? "mono" : "hint";
+    pathEl.textContent = info.path || "瀏覽器未提供完整路徑";
+    $("f-mtime").textContent = info.mtime ? new Date(info.mtime).toLocaleString("zh-TW", { hour12: false }) : "—";
     $("f-size").textContent = fmtBytes(bytes.length);
     var msg = $("send-msg");
     if (bytes.length > 2 * 1048576) { msg.hidden = false; msg.textContent = "檔案超過 2 MB，傳輸會花上好幾分鐘。"; }
@@ -13005,6 +13025,8 @@ var QRT = (function () {
     if (!S.enc) return;
     var o = opts(), K = S.enc.K;
     $("f-blocks").textContent = K + " 塊 × " + o.B + " B";
+    $("jump-no").max = K;
+    $("jump-max").textContent = "/ " + K;
     var frames = Math.ceil(K * META_EVERY / (META_EVERY - 1));
     $("f-time").textContent = "約 " + fmtTime(frames / o.fps);
     $("out-block").textContent = o.B + " bytes";
@@ -13014,6 +13036,14 @@ var QRT = (function () {
       : "依序循環 " + K + " 個區塊。漏掉的區塊要等下一輪才補得到。";
   }
 
+  function dataFrame(seq) {
+    var K = S.enc.K;
+    return {
+      bytes: S.enc.dataPacket(seq),
+      label: seq < K ? "區塊 " + (seq + 1) + " / " + K : "噴泉封包 #" + (seq + 1) + "（區塊共 " + K + " 個）"
+    };
+  }
+
   function nextPacket() {
     var enc = S.enc, K = enc.K, o = opts(), r;
     if (S.frame % META_EVERY === 0) {
@@ -13021,10 +13051,10 @@ var QRT = (function () {
     } else {
       var seq = o.mode === "loop" ? S.seq % K : S.seq;
       S.seq++;
-      r = { bytes: enc.dataPacket(seq) };
-      r.label = seq < K ? "區塊 " + (seq + 1) + " / " + K : "噴泉封包 #" + (seq + 1) + "（區塊共 " + K + " 個）";
+      r = dataFrame(seq);
     }
     S.frame++;
+    r.tag = "第 " + S.frame + " 張";
     return r;
   }
 
@@ -13052,7 +13082,23 @@ var QRT = (function () {
 
   function showNext() {
     if (!S.enc) return;
-    var p = nextPacket(), info;
+    render(nextPacket());
+  }
+
+  // Seq < K is always the plain block in both modes, so block n can be shown
+  // directly. The playback position is left alone; 播放 / 下一張 resume from it.
+  function showBlock() {
+    var inp = $("jump-no");
+    if (!S.enc) return;
+    if (!inp.checkValidity()) { inp.reportValidity(); return; }
+    pause();
+    var r = dataFrame(+inp.value - 1);
+    r.tag = "手動指定";
+    render(r);
+  }
+
+  function render(p) {
+    var info;
     try { info = drawQR(p.bytes); }
     catch (e) {
       pause();
@@ -13063,7 +13109,7 @@ var QRT = (function () {
     $("frame-label").innerHTML = "";
     var strong = document.createElement("strong"); strong.textContent = p.label;
     $("frame-label").appendChild(strong);
-    $("frame-tech").textContent = "第 " + S.frame + " 張 · V" + info.version + " · " + info.modules + "×" + info.modules + " · " + p.bytes.length + " B";
+    $("frame-tech").textContent = p.tag + " · V" + info.version + " · " + info.modules + "×" + info.modules + " · " + p.bytes.length + " B";
     $("f-version").textContent = "V" + info.version + "（" + info.modules + "×" + info.modules + " 模組）";
     if (S.sim) simulate();
   }
@@ -13097,6 +13143,8 @@ var QRT = (function () {
 
   $("btn-play").onclick = function () { S.playing ? pause() : play(); };
   $("btn-step").onclick = function () { pause(); showNext(); };
+  $("btn-jump").onclick = showBlock;
+  $("jump-no").addEventListener("keydown", function (e) { if (e.key === "Enter") showBlock(); });
   // Same file ID, so a receiver that is midway keeps what it already has.
   $("btn-restart").onclick = function () { if (!S.enc) return; S.frame = 0; S.seq = 0; resetSim(); showNext(); };
   $("btn-full").onclick = function () {
@@ -13121,7 +13169,8 @@ var QRT = (function () {
   });
   function readFile(f) {
     if (f.size > 20 * 1048576) { var m = $("send-msg"); m.hidden = false; m.textContent = "這個原型最多接受 20 MB 的檔案。"; return; }
-    f.arrayBuffer().then(function (buf) { pause(); loadFile(new Uint8Array(buf), f.name, f.type); });
+    var info = { path: f.path || f.webkitRelativePath || "", mtime: f.lastModified };
+    f.arrayBuffer().then(function (buf) { pause(); loadFile(new Uint8Array(buf), f.name, f.type, info); });
   }
 
   /* ---- single-device simulation ---- */
@@ -13280,7 +13329,27 @@ var QRT = (function () {
     if (R.done) st.textContent = "接收完成";
     else if (d.done()) st.textContent = "資料已收齊，等待檔案資訊…";
     else st.textContent = "接收中";
+    drawMissing(d);
     drawGrid();
+  }
+
+  // Lists the 1-based block numbers not yet recovered, merging runs into ranges,
+  // so the sender can show them with 指定區塊.
+  var MISSING_MAX = 40;
+  function drawMissing(d) {
+    var el = $("r-missing"), parts = [], runs = 0, miss = 0, i = 0;
+    while (i < d.K) {
+      if (d.blocks[i]) { i++; continue; }
+      var a = i; while (i < d.K && !d.blocks[i]) i++;
+      miss += i - a; runs++;
+      if (runs <= MISSING_MAX) parts.push(i - a > 1 ? (a + 1) + "–" + i : String(a + 1));
+    }
+    el.hidden = miss === 0;
+    if (!miss) return;
+    var b = document.createElement("b");
+    b.textContent = parts.join(", ") + (runs > MISSING_MAX ? ", …" : "");
+    el.textContent = "尚缺 " + miss + " 塊：";
+    el.appendChild(b);
   }
 
   function drawGrid() {
@@ -13341,6 +13410,7 @@ var QRT = (function () {
     $("result").hidden = true;
     $("recv-pct").textContent = "0%"; $("recv-status").textContent = "等待訊號";
     $("recv-bar").firstElementChild.style.width = "0"; $("recv-bar").classList.remove("done");
+    $("r-missing").hidden = true;
     ["r-name", "r-blocks", "r-packets", "r-speed", "r-time"].forEach(function (id) { $(id).textContent = "—"; });
     drawGrid();
     startCam($("cam-select").hidden ? undefined : $("cam-select").value);
@@ -13365,7 +13435,7 @@ var QRT = (function () {
   var sampleText = sample + "\n\n" + Array.from({ length: 40 }, function (_, i) {
     return "第 " + String(i + 1).padStart(2, "0") + " 行：The quick brown fox jumps over the lazy dog. 敏捷的棕色狐狸跳過了懶狗。";
   }).join("\n") + "\n";
-  loadFile(new TextEncoder().encode(sampleText), "範例說明.txt", "text/plain");
+  loadFile(new TextEncoder().encode(sampleText), "範例說明.txt", "text/plain", { path: "（內建範例）" });
 
   var savedTab = null;
   try { savedTab = localStorage.getItem("qrt-tab"); } catch (e) {}
